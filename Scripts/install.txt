@@ -1,3 +1,5 @@
+alsa-utils
+blueman
 brave-bin
 btop
 curl
@@ -30,6 +32,7 @@ ntfs-3g
 nushell
 openssh
 openvpn
+pavucontrol
 python
 python-lsp-server
 python-pexpect
