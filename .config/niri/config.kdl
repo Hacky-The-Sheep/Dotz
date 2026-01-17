@@ -275,10 +275,6 @@ spawn-at-startup "synology-drive"
 spawn-at-startup "dunst"
 spawn-at-startup "NetworkManager"
 spawn-at-startup "syncthing"
-spawn-at-startup "exec swayidle -w
-    timeout 300 'niri msg action power-off-monitors'
-    resume 'niri msg action power-on-monitors'"
-
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
