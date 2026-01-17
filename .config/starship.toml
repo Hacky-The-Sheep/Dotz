@@ -1,0 +1,71 @@
+format = """
+[░▒▓](#89dceb)\
+[ 󰣇 ](bg:#89dceb fg:#7f849c)\
+[](bg:#45475a fg:#89dceb)\
+$directory\
+[](fg:#45475a bg:#6c7086)\
+$git_branch\
+$git_status\
+[](fg:#6c7086 bg:#585b70)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#585b70 bg:#cba6f7)\
+$time\
+[ ](fg:#cba6f7)\
+\n$character"""
+
+[directory]
+style = "fg:#e3e5e5 bg:#45475a"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "… /"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = " "
+style = "bg:#313244"
+format = '[[ $symbol $branch ](fg:#f38ba8 bg:#6c7086)]($style)'
+
+[git_status]
+style = "bg:#313244"
+format = '[[($all_status$ahead_behind )](fg:#f38ba8 bg:#6c7086)]($style)'
+
+[nix_shell]
+disabled = false
+impure_msg = '[impure shell](bold red)'
+pure_msg = '[pure shell](bold green)'
+unknown_msg = '[unknown shell](bold yellow)'
+format = 'via [☃️ $state( \($name\))](bold blue) '
+
+[nodejs]
+symbol = " "
+style = "bg:#585b70"
+format = '[[ $symbol ($version) ](fg:#a6e3a1 bg:#585b70)]($style)'
+
+[rust]
+symbol = " "
+style = "bg:#585b70"
+format = '[[ $symbol ($version) ](fg:#f38ba8 bg:#585b70)]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#585b70"
+format = '[[ $symbol ($version) ](fg:#cba6f7 bg:#585b70)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#585b70"
+format = '[[ $symbol ($version) ](fg:#45475a bg:#585b70)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#cba6f7"
+format = '[[  $time ](fg:#11111b bg:#cba6f7)]($style)'
