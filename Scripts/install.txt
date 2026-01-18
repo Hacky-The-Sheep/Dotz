@@ -19,6 +19,7 @@ golangci-lint
 gopls
 helix
 hydra
+hyprlock
 hyprpolkitagent
 john
 kdenlive
@@ -47,6 +48,8 @@ stow
 swww
 syncthing
 tailscale
+ttc-iosevka
+ttc-iosevka-aile
 unzip
 vscode-css-languageserver
 vscode-html-languageserver
