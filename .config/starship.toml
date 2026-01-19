@@ -1,6 +1,6 @@
 format = """
 [░▒▓](#89dceb)\
-[ 󰣇 ](bg:#89dceb fg:#7f849c)\
+[  ](bg:#89dceb fg:#7f849c)\
 [](bg:#45475a fg:#89dceb)\
 $directory\
 [](fg:#45475a bg:#6c7086)\
@@ -39,6 +39,7 @@ format = '[[($all_status$ahead_behind )](fg:#f38ba8 bg:#6c7086)]($style)'
 
 [nix_shell]
 disabled = false
+heuristic = true
 impure_msg = '[impure shell](bold red)'
 pure_msg = '[pure shell](bold green)'
 unknown_msg = '[unknown shell](bold yellow)'

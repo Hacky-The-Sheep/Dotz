@@ -1,3 +1,5 @@
+starship init fish | source
+
 # Aliases
 alias ei exit
 alias python python3
