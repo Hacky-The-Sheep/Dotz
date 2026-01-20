@@ -76,7 +76,7 @@ def os_icon [] {
 
 $env.PROMPT_COMMAND = {
     let ssh = if ($env.SSH_CONNECTION? != null) {
-        "󰣀 "
+        "[SSH] "
     } else {
         ""
     }
