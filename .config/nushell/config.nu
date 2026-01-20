@@ -6,6 +6,7 @@ $env.EDITOR = "hx"
 
 # ALIASES
 alias ei = exit
+alias hx = helix
 
 # GIT ALIASES
 alias ga = git add
@@ -74,6 +75,11 @@ def os_icon [] {
 
 
 $env.PROMPT_COMMAND = {
+    let ssh = if ($env.SSH_CONNECTION? != null) {
+        "󰣀 "
+    } else {
+        ""
+    }
     let os = (os_icon)
     let host = (sys host | get hostname)
     let cwd  = ($env.PWD | path relative-to "/home/hacky/")
@@ -97,7 +103,7 @@ $env.PROMPT_COMMAND = {
     # let git_segment = if ($git_current_ref != "") { $"(ansi reset) (ansi yellow)($git_current_ref)"}
     let git_segment = if ($git_current_ref != "") {$"(ansi reset) (ansi yellow)($git_current_ref)($git_indicator)"}
 
-    $"(ansi blue)($os) on (ansi $cat_red_bold)($host) (ansi blue)($cwd)($git_segment)\n"
+    $"(ansi white)($ssh)(ansi blue)($os) on (ansi $cat_red_bold)($host) (ansi blue)($cwd)($git_segment)\n"
 }
 
 ## Remove the time from the right hand side
