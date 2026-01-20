@@ -25,7 +25,7 @@
     "spacing ": 6,
     "icon": true,
     "avatar": "/home/hacky/Pictures/Icons/archlinux-icon.svg",
-    "on-click": "/home/hacky/.config/waybar/wall.sh"
+    "on-click": "bash /home/hacky/.config/waybar/wall.sh"
   },
   "cpu": {
     "interval": 1,
@@ -39,7 +39,8 @@
       "▆",
       "▇",
       "█"
-    ]
+    ],
+    "on-click": "ghostty -e btop"
   },
   "clock": {
     "format": "{:%I:%M:%S    %b %e, %Y}",
