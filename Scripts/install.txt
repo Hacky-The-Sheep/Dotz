@@ -37,6 +37,7 @@ marksman
 mpv
 net-tools
 nmap
+noto-fonts-emoji
 nss-mdns
 ntfs-3g
 nushell
@@ -62,6 +63,7 @@ tailscale
 ttc-iosevka
 ttc-iosevka-aile
 unzip
+usbutils
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
