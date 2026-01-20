@@ -1,80 +1,98 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-[░▒▓](#89dceb)\
-[  ](bg:#89dceb fg:#7f849c)\
-[ ](bg:#45475a fg:#fab387)\
+$os \
+$username\
 $hostname\
-[](bg:#45475a fg:#89dceb)\
 $directory\
-[](fg:#45475a bg:#6c7086)\
 $git_branch\
+$git_state\
 $git_status\
-[](fg:#6c7086 bg:#585b70)\
-$nodejs\
+$cmd_duration\
+$python\
 $rust\
 $golang\
-$php\
-[](fg:#585b70 bg:#cba6f7)\
-[ ](fg:#cba6f7)\
-\n$character"""
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "#89b4fa"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+# ~/.config/starship.toml
 
 [hostname]
 ssh_only = false
-format =  "[$hostname]($style)"
-style = "bg:#fab387 fg:#45475a"
-truncation_length = 3
+format = '[$ssh_symbol](bold #89b4fa) on [$hostname](bold #f38ba8) '
+trim_at = '.companyname.com'
 disabled = false
 
 [directory]
-style = "fg:#e3e5e5 bg:#45475a"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "… /"
+style = "#89b4fa"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+[character]
+success_symbol = "[❯](#cba6f7)"
+error_symbol = "[❯](#f38ba8)"
+vimcmd_symbol = "[❮](#a6e3a1)"
 
 [git_branch]
-symbol = " "
-style = "bg:#313244"
-format = '[[ $symbol $branch ](fg:#f38ba8 bg:#6c7086)]($style)'
+format = "[$branch]($style)"
+style = "#6c7086"
 
 [git_status]
-style = "bg:#313244"
-format = '[[($all_status$ahead_behind )](fg:#f38ba8 bg:#6c7086)]($style)'
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
-[nix_shell]
-disabled = false
-heuristic = true
-impure_msg = '[impure shell](bold red)'
-pure_msg = '[pure shell](bold green)'
-unknown_msg = '[unknown shell](bold yellow)'
-format = 'via [☃️ $state( \($name\))](bold blue) '
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "#6c7086"
 
-[nodejs]
-symbol = " "
-style = "bg:#585b70"
-format = '[[ $symbol ($version) ](fg:#a6e3a1 bg:#585b70)]($style)'
+[cmd_duration]
+format = "[$duration]($style) "
+style = "#f9e2af"
 
-[rust]
-symbol = " "
-style = "bg:#585b70"
-format = '[[ $symbol ($version) ](fg:#f38ba8 bg:#585b70)]($style)'
+[python]
+symbol = " "
+format = "[$virtualenv]($style) "
+style = "#6c7086"
+detect_extensions = []
+detect_files = []
 
 [golang]
 symbol = " "
-style = "bg:#585b70"
-format = '[[ $symbol ($version) ](fg:#cba6f7 bg:#585b70)]($style)'
+style = "#89b4fa"
+format = '| [$symbol($version)]($style)'
 
-[php]
-symbol = ""
-style = "bg:#585b70"
-format = '[[ $symbol ($version) ](fg:#45475a bg:#585b70)]($style)'
-
-[time]
-disabled = true
-time_format = "%R" # Hour:Minute Format
-style = "bg:#cba6f7"
-format = '[[  $time ](fg:#11111b bg:#cba6f7)]($style)'
+[rust]
+symbol = " "
+style = "#f38ba8"
+format = '| [$symbol ($version)]($style)'
