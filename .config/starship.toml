@@ -1,6 +1,8 @@
 format = """
 [░▒▓](#89dceb)\
-[  ](bg:#89dceb fg:#7f849c)\
+[  ](bg:#89dceb fg:#7f849c)\
+[ ](bg:#45475a fg:#fab387)\
+$hostname\
 [](bg:#45475a fg:#89dceb)\
 $directory\
 [](fg:#45475a bg:#6c7086)\
@@ -14,6 +16,13 @@ $php\
 [](fg:#585b70 bg:#cba6f7)\
 [ ](fg:#cba6f7)\
 \n$character"""
+
+[hostname]
+ssh_only = false
+format =  "[$hostname]($style)"
+style = "bg:#fab387 fg:#45475a"
+truncation_length = 3
+disabled = false
 
 [directory]
 style = "fg:#e3e5e5 bg:#45475a"
