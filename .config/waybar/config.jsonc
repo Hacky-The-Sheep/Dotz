@@ -6,7 +6,7 @@
   "height": 35,
   "modules-left": [
     "user",
-    "disk",
+    "cpu",
     "memory"
   ],
   "modules-center": [
@@ -21,16 +21,25 @@
     "tray"
   ],
   "user": {
-    "format": "  hacky | ({work_H}hr {work_M} mins ↑)",
+    "format": "  hacky ",
     "spacing ": 6,
     "icon": true,
     "avatar": "/home/hacky/Pictures/Icons/archlinux-icon.svg",
     "on-click": "/home/hacky/.config/waybar/wall.sh"
   },
   "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "alacritty -e btop"
+    "interval": 1,
+    "format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}%   ",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ]
   },
   "clock": {
     "format": "{:%I:%M:%S    %b %e, %Y}",

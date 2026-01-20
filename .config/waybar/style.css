@@ -18,6 +18,7 @@
   #tray,
   #memory,
   #disk,
+  #cpu,
   #user,
   window#waybar {
     background-color: rgba(0, 0, 0, 0);
@@ -43,6 +44,12 @@
   }
 
   #disk {
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #89b4fa;
+  }
+
+  #cpu {
     margin-left: 4px;
     margin-right: 4px;
     color: #89b4fa;
