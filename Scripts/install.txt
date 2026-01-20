@@ -13,6 +13,7 @@ exfat-utils
 eza
 fastfetch
 ffmpeg
+fish
 fragments
 freerdp
 fuzzel
@@ -57,6 +58,7 @@ rust-analyzer
 screen
 signal-desktop
 sshs
+starship
 stow
 swww
 syncthing
