@@ -1,4 +1,5 @@
 alsa-utils
+ansible-language-server
 avahi
 blueman
 brave-bin
@@ -60,6 +61,7 @@ stow
 swww
 syncthing
 tailscale
+tela-circle-icon-theme-dracula
 ttc-iosevka
 ttc-iosevka-aile
 unzip
