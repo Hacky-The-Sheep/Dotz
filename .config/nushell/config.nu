@@ -84,23 +84,17 @@ $env.PROMPT_COMMAND = {
     let host = (sys host | get hostname)
     let cwd  = ($env.PWD | path relative-to "/home/hacky/")
 
-    let git_status = (do { git status --porcelain=2 --branch } | complete | get stdout | str trim)
+    let git_status = (do { git status} | complete | get stdout | str trim)
 
-    let git_indicator = if ($git_status | str contains "branch.ab +") {
-      "↑"
-    } else if ($git_status | str contains "branch.ab -") {
-      "↓"
-    } else if ($git_status | str contains "??") {
-      "(ansi cat_red)?"
-    } else if ($git_status | str contains "1 ") or ($git_status | str contains "2 ") {
-      "(ansi yellow)✚"
+    let git_indicator = if ($git_status | str contains "not staged") {
+      "  "
+    } else if ($git_status | str contains "Changes to be committed") {
+      " 󱆿 "
     } else {
-      "(ansi green)✔"
+      ""
     }
 
-
     let git_current_ref = (do { git rev-parse --abbrev-ref HEAD } | complete | get stdout | str trim)
-    # let git_segment = if ($git_current_ref != "") { $"(ansi reset) (ansi yellow)($git_current_ref)"}
     let git_segment = if ($git_current_ref != "") {$"(ansi reset) (ansi yellow)($git_current_ref)($git_indicator)"}
 
     $"(ansi white)($ssh)(ansi blue)($os) on (ansi $cat_red_bold)($host) (ansi blue)($cwd)($git_segment)\n"
