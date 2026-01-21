@@ -90,6 +90,8 @@ $env.PROMPT_COMMAND = {
       "  "
     } else if ($git_status | str contains "Changes to be committed") {
       " 󱆿 "
+    } else if ($git_status | str contains "branch is ahead") {
+      "  "
     } else {
       ""
     }
