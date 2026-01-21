@@ -12,6 +12,7 @@ dunst
 exfat-utils
 eza
 fastfetch
+fd
 ffmpeg
 fish
 fragments
