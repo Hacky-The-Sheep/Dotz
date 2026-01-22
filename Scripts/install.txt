@@ -39,6 +39,7 @@ lldb
 marksman
 mpv
 net-tools
+nix
 nmap
 noto-fonts-emoji
 nss-mdns
