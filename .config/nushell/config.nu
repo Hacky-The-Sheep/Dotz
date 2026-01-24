@@ -2,7 +2,7 @@
 $env.config.show_banner = false
 
 # Editor
-$env.EDITOR = "hx"
+$env.EDITOR = "helix"
 
 # ALIASES
 alias ei = exit
@@ -56,7 +56,6 @@ $env.config = ($env.config | merge {
 
 
 ## STYLING
-
 ## Catppuccin
 let cat_red_bold = {
   fg: '#f38ba8'
@@ -104,3 +103,5 @@ $env.PROMPT_COMMAND = {
 
 ## Remove the time from the right hand side
 $env.PROMPT_COMMAND_RIGHT = ""
+
+source ~/.cache/carapace/init.nu
