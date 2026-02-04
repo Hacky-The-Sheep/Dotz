@@ -32,7 +32,6 @@ let nix_shell_suffix = if ($env.IN_NIX_SHELL? | is-not-empty) {
 }
 
 ## ENV Variables
-$env.CARAPACE_BRIDGES = "inshellisense,carapace,zsh,fish,bash"
 $env.config.completions.algorithm = "substring"
 $env.config.completions.sort = "smart"
 $env.config.completions.case_sensitive = false
@@ -103,5 +102,3 @@ $env.PROMPT_COMMAND = {
 
 ## Remove the time from the right hand side
 $env.PROMPT_COMMAND_RIGHT = ""
-
-source ~/.cache/carapace/init.nu

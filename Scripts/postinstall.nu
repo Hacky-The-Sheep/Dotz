@@ -19,8 +19,7 @@ print "    "
 print "Enabling 󰣀 "
 ^sudo systemctl enable sshd
 
-# YAY
-## Enable Yay
-print "  "
-print "Installing yay AUR Helper..."
-^sudo pacman -S --needed git base-devel and git clone https://aur.archlinux.org/yay.git and cd yay and makepkg -si
+## NuShell
+print "    "
+print "Changing to nuShell"
+print "chsh -s /usr/bin/nu"
