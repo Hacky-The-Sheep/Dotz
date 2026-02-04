@@ -52,6 +52,7 @@ python-lsp-server
 python-pexpect
 remmina
 ripgrep
+rofi
 ruff
 rust
 rust-analyzer
