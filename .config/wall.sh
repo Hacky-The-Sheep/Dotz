@@ -1,0 +1,1 @@
+waybar/wall.sh
