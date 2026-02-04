@@ -24,14 +24,12 @@ gnome-disk-utility
 go
 gobuster
 golangci-lint
-golangci-lint
 gopls
 gvfs-smb
 gvfs-wsdd
 helix
 hydra
 hyprlock
-hyprpolkitagent
 john
 kdenlive
 libreoffice-still
@@ -60,7 +58,6 @@ rust-analyzer
 screen
 signal-desktop
 sshs
-starship
 stow
 swww
 syncthing

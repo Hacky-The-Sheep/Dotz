@@ -1,3 +1,4 @@
 carapace-bin
 powershell-bin
+soteria
 superhtml

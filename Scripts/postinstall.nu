@@ -18,3 +18,9 @@ print "Adding Nix channels..."
 print "    "
 print "Enabling 󰣀 "
 ^sudo systemctl enable sshd
+
+# YAY
+## Enable Yay
+print "  "
+print "Installing yay AUR Helper..."
+^sudo pacman -S --needed git base-devel and git clone https://aur.archlinux.org/yay.git and cd yay and makepkg -si
