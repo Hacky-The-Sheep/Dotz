@@ -27,3 +27,14 @@ print "chsh -s /usr/bin/nu"
 ## Git
 git config --global user.email "jon.nguyen7@protonmail.com"
 git config --global user.name "Jon"
+
+## Tailscale
+print "    "
+print "Tailscale <--->"
+^sudo systemctl enable tailscaled
+^sudo systemctl start tailscaled
+
+## Edge
+print "  "
+print "Edging now..."
+^flatpak install flathub com.microsoft.Edge
