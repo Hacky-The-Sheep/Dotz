@@ -23,3 +23,7 @@ print "Enabling 󰣀 "
 print "    "
 print "Changing to nuShell"
 print "chsh -s /usr/bin/nu"
+
+## Git
+git config --global user.email "jon.nguyen7@protonmail.com"
+git config --global user.name "Jon"
