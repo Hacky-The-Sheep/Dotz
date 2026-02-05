@@ -1,4 +1,4 @@
-carapace-bin
+noctalia-shell
 powershell-bin
 soteria
 superhtml
