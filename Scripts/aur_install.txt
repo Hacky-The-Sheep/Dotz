@@ -1,4 +1,3 @@
-noctalia-shell
 powershell-bin
 soteria
 superhtml

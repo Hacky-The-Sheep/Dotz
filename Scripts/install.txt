@@ -39,6 +39,7 @@ mpv
 net-tools
 nix
 nmap
+noctalia-shell
 noto-fonts-emoji
 nss-mdns
 ntfs-3g
