@@ -1,5 +1,6 @@
 #!/bin/sh
 foot --server &
+iwd &
 syncthing &
 waybar &
 /usr/lib/soteria-polkit/soteria &
