@@ -1,0 +1,13 @@
+anchor=top-center
+background-color=#1a1b26
+follow=mouse
+font=Iosevka 16
+markup=full
+text-color=#b4f9f8
+timeout=10
+
+mouse_left_click = context
+mouse_middle_click = do_action, close_current
+mouse_right_click = close_all
+
+corner-radius=20
