@@ -1,4 +1,4 @@
-theme = "tokyonight"
+theme = "catppuccin-mocha"
 
 [editor]
 auto-format = true

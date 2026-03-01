@@ -2,7 +2,8 @@
 # foot --server &
 iwd &
 syncthing &
-waybar &
+# waybar &
+qs &
 /usr/lib/soteria-polkit/soteria &
 swaybg -i /home/hacky/Pictures/Wallpapers/pixel_road.png &
 gnome-keyring-daemon --start --components=secrets
