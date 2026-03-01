@@ -17,3 +17,7 @@ auto-format = true
 name = "nix"
 language-servers = [ "nixd" ]
 auto-format = true
+
+[language-server.qmlls]
+args = ["-E"]
+command = "qmlls"

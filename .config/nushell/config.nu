@@ -1,6 +1,9 @@
 # GENERAL
 $env.config.show_banner = false
 
+# Locale
+$env.LANG = "en_US.UTF-8"
+
 # Editor
 $env.EDITOR = "helix"
 
