@@ -21,3 +21,8 @@ auto-format = true
 [language-server.qmlls]
 args = ["-E"]
 command = "qmlls"
+
+[[language]]
+name = "markdown"
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "md"] }
+auto-format = true
