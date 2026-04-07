@@ -1,5 +1,9 @@
 #!/usr/bin/env nu
 
+## Install the non-free repo before doing the rest
+print "Installing non-free repo\n"
+sudo xbps-install -Sy void-repo-nonfree
+
 # List of packages to install
 let packages = [
     avahi
@@ -12,6 +16,7 @@ let packages = [
     exfat-utils
     fd
     ffmpeg
+    flatpak
     font-iosevka
     freerdp
     ghostty

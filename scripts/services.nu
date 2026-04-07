@@ -16,7 +16,12 @@ sudo ln -s /etc/sv/bluetoothd/ /var/service/
 
 print "\nEnabling 󱄅 Nix Service"
 sleep 3sec
+print "\nEnabling runit nix service"
 sudo ln -s /etc/sv/nix-daemon/ /var/service/
+print "running: nix-channel --add https://nixos.org/channels/nixpkgs-unstable"
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel update
+
 
 print "Enabling dbus"
 sleep 3sec
@@ -33,3 +38,7 @@ sudo ln -s /etc/sv/sshd/ /var/service/
 print "\n Enabling udevd"
 sleep 3sec
 sudo ln -s /etc/sv/udevd/ /var/service/
+
+print "\n################"
+sleep 3sec
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
