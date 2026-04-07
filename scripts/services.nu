@@ -20,12 +20,7 @@ print "\nEnabling runit nix service"
 sudo ln -s /etc/sv/nix-daemon/ /var/service/
 print "running: nix-channel --add https://nixos.org/channels/nixpkgs-unstable"
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-nix-channel update
-
-
-print "Enabling dbus"
-sleep 3sec
-sudo ln -s /etc/sv/dbus/ /var/service/
+nix-channel --update
 
 print "\nEnabling 󱏿 tailscale"
 sleep 3sec
@@ -40,5 +35,6 @@ sleep 3sec
 sudo ln -s /etc/sv/udevd/ /var/service/
 
 print "\n################"
+print "Adding flatpak"
 sleep 3sec
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
