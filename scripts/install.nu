@@ -4,6 +4,11 @@
 print "Installing non-free repo\n"
 sudo xbps-install -Sy void-repo-nonfree
 
+sleep 4sec
+print "\nInstalling nocatlia-shell repo"
+echo "repository=https://universalrepo.r1xelelo.workers.dev/void" | sudo tee /etc/xbps.d/noctalia.conf
+sudo xbps-install -S
+
 # List of packages to install
 let packages = [
     avahi
@@ -42,6 +47,7 @@ let packages = [
     mpv
     nautilus
     net-tools
+    noctalia-shell
     niri
     nix
     nmap
