@@ -10,10 +10,14 @@ let packages = [
     blueman
     brightnessctl
     btop
+    carapace
     cryptsetup
     curl
+    dbus
     delve
+    elogind
     exfat-utils
+    fastfetch
     fd
     ffmpeg
     flatpak
@@ -34,7 +38,9 @@ let packages = [
     libreoffice
     lldb
     lvm2
+    meson
     mpv
+    nautilus
     net-tools
     niri
     nix
@@ -63,15 +69,20 @@ let packages = [
     unzip
     usbutils
     wayland
+    wayland-protocols
     wget
     wireshark
     wireplumber
     wl-clipboard
     wtype
+    xdg-desktop-portal-gnome
+    xtools
+    xwayland-satellite
     yaml-language-server
     yazi
     yt-dlp
     Signal-Desktop
+    NetworkManager
 ]
 
 # Update repository database
