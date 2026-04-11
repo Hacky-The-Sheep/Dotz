@@ -1,5 +1,5 @@
-# theme = "catppuccin-mocha"
-theme = "gruvbox"
+theme = "catppuccin-mocha"
+# theme = "gruvbox"
 
 [editor]
 auto-format = true

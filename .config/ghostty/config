@@ -10,7 +10,7 @@ font-family = Iosevka
 font-size = 16
 
 # The Cat
-theme = GruvboxDark
+theme = catppuccin-mocha
 
 # Title
 title = "󰊠 Ghostty 󰊠 "
