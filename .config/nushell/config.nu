@@ -2,7 +2,7 @@
 $env.config.show_banner = false
 
 # Editor
-$env.EDITOR = "helix"
+$env.EDITOR = "hx"
 
 let carapace_completer = {|spans|
     carapace $spans.0 nushell ...$spans | from json
@@ -15,7 +15,6 @@ $env.LC_ALL = "en_US.UTF-8"
 # ALIASES
 alias ei = exit
 alias nb = newsboat
-alias hx = helix
 
 # GIT ALIASES
 alias ga = git add

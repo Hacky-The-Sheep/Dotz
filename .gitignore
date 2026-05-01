@@ -1,1 +1,4 @@
 .config/nushell/history*
+.config/mozilla
+.config/pulse
+.config/dconf
