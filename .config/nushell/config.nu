@@ -8,6 +8,13 @@ let carapace_completer = {|spans|
     carapace $spans.0 nushell ...$spans | from json
 }
 
+# Path
+$env.PATH ++= ['/home/hacky/.cargo/bin' '/var/lib/flatpak/exports/bin']
+
+# Nix
+$env.NIX_LINK = $"($env.HOME)/.nix-profile"
+$env.NIX_PROFILES = $"/nix/var/nix/profiles/default ($env.HOME)/.nix-profile"
+
 # Locale
 $env.LANG = "en_US.UTF-8"
 $env.LC_ALL = "en_US.UTF-8"
@@ -15,6 +22,8 @@ $env.LC_ALL = "en_US.UTF-8"
 # ALIASES
 alias ei = exit
 alias nb = newsboat
+alias zj = zellij
+alias nbus = dbus-run-session niri --session
 
 # GIT ALIASES
 alias ga = git add

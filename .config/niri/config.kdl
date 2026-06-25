@@ -1,15 +1,4 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
 prefer-no-csd
-environment {
-    XDG_DATA_DIRS "/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
-}
 input {
     keyboard {
         xkb {
@@ -30,6 +19,7 @@ input {
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
+
     mouse {
         // off
         // natural-scroll
@@ -54,7 +44,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse
 }
 
 // You can configure outputs by their name, which you can find
@@ -63,11 +53,18 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
+output "eDP-2" {
     // Uncomment this line to disable this output.
     // off
 
-   mode "2560x1600@165.000"
+    // Resolution and, optionally, refresh rate of the output.
+    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+    // If the refresh rate is omitted, niri will pick the highest refresh rate
+    // for the resolution.
+    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+    mode "2560x1600@165.000"
+    variable-refresh-rate
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.25
@@ -93,7 +90,7 @@ output "eDP-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 35
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -164,7 +161,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -189,9 +186,9 @@ layout {
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
-        active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
 
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can enable drop shadows for windows.
@@ -244,28 +241,8 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
 // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
-spawn-at-startup "qs" "-c" "noctalia-shell"
-// spawn-at-startup "/usr/lib/soteria-polkit/soteria"
-// spawn-at-startup "swww-daemon"
-// spawn-at-startup "swww ~/Pictures/Wallpapers/Goku_Bulma.jpg" "--transition-type wipe" "transition-angle 30" "transition-step 90"
-// spawn-at-startup "syncthing"
-// spawn-at-startup "dunst"
-// spawn-at-startup "NetworkManager"
-// spawn-at-startup "gnome-keyring-daemon --start --components=secrets"
-// spawn-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-sh-at-startup "~/scripts/startup.sh"
-
+spawn-sh-at-startup "/home/hacky/scripts/startup.sh"
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
@@ -297,13 +274,6 @@ animations {
     // slowdown 3.0
 }
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-
 window-rule {
     match is-active=false
     opacity 0.80
@@ -318,10 +288,33 @@ window-rule {
     background-effect {
         blur true
         xray false
-    }
-    
+    }    
 }
 
+workspace "Chat"
+
+window-rule {
+    match app-id="signal"
+    open-on-workspace "Chat"
+}
+
+workspace "Brave"
+
+window-rule {
+    match app-id="brave-origin-nightly"
+    open-on-workspace "Brave"
+}
+
+workspace "Work"
+
+window-rule {
+    match app-id="microsoft-edge"
+    open-on-workspace "Work"
+}
+
+
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
@@ -344,41 +337,23 @@ window-rule {
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
     block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
+// Enable rounded corners for all windows.
 window-rule {
     geometry-corner-radius 20
     clip-to-geometry true
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
-    // Mod-Shift-/, which is usually the same as Mod-?,
-    // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: Ghostty  " { spawn "ghostty"; }
-    Mod+R hotkey-overlay-title="Run an Application: Noc-Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Super+L hotkey-overlay-title="Lock the Screen: Hyprlock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+R hotkey-overlay-title="Run an Application: Noc-Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Y hotkey-overlay-title="Signal" { spawn-sh "signal-desktop --ozone-platform-hint=auto"; }
-    Mod+B hotkey-overlay-title="Brave" { spawn-sh "flatpak run com.brave.Browser --password-store=kdewallet6"; }
+    Mod+L hotkey-overlay-title="Lock" { spawn-sh "noctalia msg session lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -389,21 +364,11 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    // Wallpaper Test
-    // Mod+Ctrl+1 {spawn-sh "swww img --transition-type wipe --transition-angle 30 --transition-step 90 ~/Pictures/Wallpapers/warhammer.jpg";}
-    // Mod+Ctrl+2 {spawn-sh "swww img --transition-type wipe --transition-angle 30 --transition-step 90 ~/Pictures/Wallpapers/windows.png";}
-    // Mod+Ctrl+3 {spawn-sh "swww img --transition-type wipe --transition-angle 30 --transition-step 90 ~/Pictures/Wallpapers/vacation.jpg";}
-    // Mod+Ctrl+4 {spawn-sh "swww img --transition-type wipe --transition-angle 30 --transition-step 90 ~/Pictures/Wallpapers/anime_space.png";}
-    // Mod+Ctrl+5 {spawn-sh "swww img --transition-type wipe --transition-angle 30 --transition-step 90 ~/Pictures/Wallpapers/coding.jpg";}
     
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
@@ -421,7 +386,7 @@ binds {
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
     Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    // Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
@@ -639,4 +604,10 @@ binds {
     //     match namespace="^wallpaper$"
     //     place-within-backdrop true
     // }
+}
+
+include "noctalia.kdl"
+
+environment {
+    XDG_DATA_DIRS "~/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/home/hacky/.local/share/flatpak/exports/share"
 }

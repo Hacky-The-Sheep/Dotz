@@ -6,12 +6,12 @@ sudo xbps-install -Sy void-repo-nonfree
 
 sleep 4sec
 print "\nInstalling nocatlia-shell repo"
-echo "repository=https://universalrepo.r1xelelo.workers.dev/void" | sudo tee /etc/xbps.d/noctalia.conf
+echo "repository=https://universalrepository.pages.dev/void" | sudo tee /etc/xbps.d/10-noctalia.conf
 sudo xbps-install -S
 
 # List of packages to install
 let packages = [
-    avahi
+avahi
     blueman
     brightnessctl
     btop
@@ -40,6 +40,7 @@ let packages = [
     helix
     john
     kdenlive
+    libpcsclite
     libreoffice
     lldb
     lvm2
@@ -47,7 +48,7 @@ let packages = [
     mpv
     nautilus
     net-tools
-    noctalia-shell
+    noctalia
     niri
     nix
     nmap
@@ -56,6 +57,7 @@ let packages = [
     ntfs-3g
     nushell
     openssh
+    openssh-sk-helper
     openvpn
     pavucontrol
     pipewire

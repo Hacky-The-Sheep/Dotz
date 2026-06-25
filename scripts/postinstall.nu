@@ -10,14 +10,14 @@ sleep 5sec
 print "    "
 print "Adding Nix channels..."
 
-^nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-^nix-channel --update
+^sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+^sudo nix-channel --update
 
 # SSH
 ## Enable SSHD
 print "    "
 print "Enabling 󰣀 "
-^sudo systemctl enable sshd
+^sudo ln -s /etc/sv/sshd /var/service/
 
 ## NuShell
 print "    "
@@ -31,10 +31,19 @@ git config --global user.name "Jon"
 ## Tailscale
 print "    "
 print "Tailscale <--->"
-^sudo systemctl enable tailscaled
+^sudo ln -s /etc/sv/tailscaled/ /var/service/
 ^sudo systemctl start tailscaled
 
 ## Edge
 print "  "
 print "Edging now..."
 ^flatpak install flathub com.microsoft.Edge
+print " "
+print "Yubico Authenticator"
+^flatpak install flathub com.yubico.yubioath
+print " "
+print "Postman"
+^flatpak install flathub com.getpostman.Postman
+print " "
+print "Yubico"
+^flatpak install flathub com.yubico.yubioath
